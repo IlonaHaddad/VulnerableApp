@@ -16,6 +16,8 @@ import org.sasanlabs.vulnerability.types.VulnerabilityType;
 import org.sasanlabs.vulnerableapp.facade.schema.VulnerabilityDefinition;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,7 +43,7 @@ public class VulnerableAppRestController {
      * @throws JsonProcessingException
      */
     @GetMapping
-    @RequestMapping("/allEndPoint")
+    @PostMapping("/allEndPoint")
     public String allEndPoints() throws JsonProcessingException {
         return "<pre>"
                 + JSONSerializationUtils.serializeWithPrettyPrintJSON(
@@ -103,8 +105,7 @@ public class VulnerableAppRestController {
      * @throws JsonProcessingException
      * @throws UnknownHostException
      */
-    @GetMapping
-    @RequestMapping("/scanner/metadata")
+    @PostMapping("/scanner/metadata")
     public ScannerMetaResponseBean getScannerRelatedMetaInformation() {
         return new ScannerMetaResponseBean(
                 Arrays.asList(VulnerabilityType.values()),
